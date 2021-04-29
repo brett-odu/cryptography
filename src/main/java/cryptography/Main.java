@@ -79,22 +79,10 @@ public class Main extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1200, 700);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(222, 184, 135));
+		contentPane.setBackground(SystemColor.controlHighlight);
 		contentPane.setBorder(new MatteBorder(3, 3, 3, 3, (Color) new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JLabel lblPublicKey = new JLabel("Public Key");
-		lblPublicKey.setFont(new Font("Serif", Font.ITALIC, 30));
-		lblPublicKey.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPublicKey.setBounds(510, 102, 180, 50);
-		contentPane.add(lblPublicKey);
-		
-		JLabel lblPrivateKey = new JLabel("Private Key");
-		lblPrivateKey.setFont(new Font("Serif", Font.ITALIC, 12));
-		lblPrivateKey.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPrivateKey.setBounds(510, 205, 180, 15);
-		contentPane.add(lblPrivateKey);
 		
 		JLabel lblAlice = new JLabel("Alice");
 		lblAlice.setHorizontalAlignment(SwingConstants.CENTER);
@@ -107,23 +95,19 @@ public class Main extends JFrame {
 		lblBob.setFont(new Font("Serif", Font.BOLD, 30));
 		lblBob.setBounds(900, 10, 100, 40);
 		contentPane.add(lblBob);
-		
-		JLabel lblSecretValue = new JLabel("Secret Value");
-		lblSecretValue.setFont(new Font("Serif", Font.ITALIC, 20));
-		lblSecretValue.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSecretValue.setBounds(510, 270, 180, 30);
-		contentPane.add(lblSecretValue);
+		textAreaAliceSend.setBackground(SystemColor.controlHighlight);
 		
 		textAreaAliceSend.setWrapStyleWord(true);
 		textAreaAliceSend.setTabSize(4);
 		textAreaAliceSend.setRows(7);
 		textAreaAliceSend.setLineWrap(true);
 		textAreaAliceSend.setColumns(40);
-		textAreaAliceSend.setBounds(50, 310, 400, 60);
+		textAreaAliceSend.setBounds(50, 330, 400, 80);
 		contentPane.add(textAreaAliceSend);
-		TitledBorder aSendBord = BorderFactory.createTitledBorder(blackline, "Alice's Message");
+		TitledBorder aSendBord = BorderFactory.createTitledBorder(blackline, "Alice's Message To Send");
 		aSendBord.setTitleJustification(TitledBorder.CENTER);
 		textAreaAliceSend.setBorder(aSendBord);
+		textAreaBobSend.setBackground(SystemColor.controlHighlight);
 
 		textAreaBobSend.setColumns(40);
 		textAreaBobSend.setLineWrap(true);
@@ -131,19 +115,27 @@ public class Main extends JFrame {
 		textAreaBobSend.setRows(7);
 		textAreaBobSend.setWrapStyleWord(true);
 		textAreaBobSend.setText("");
-		textAreaBobSend.setBounds(750, 310, 400, 60);
+		textAreaBobSend.setBounds(750, 330, 400, 80);
 		contentPane.add(textAreaBobSend);
+		TitledBorder bSendBord = BorderFactory.createTitledBorder(blackline, "Bob's Message To Send");
+		bSendBord.setTitleJustification(TitledBorder.CENTER);
+		textAreaBobSend.setBorder(bSendBord);
+		
+		
 		textAreaAPub.setBackground(SystemColor.controlHighlight);
 		textAreaAPub.setFont(new Font("Dialog", Font.PLAIN, 12));
-		
 		textAreaAPub.setWrapStyleWord(true);
 		textAreaAPub.setTabSize(4);
 		textAreaAPub.setRows(7);
 		textAreaAPub.setLineWrap(true);
 		textAreaAPub.setEditable(false);
 		textAreaAPub.setColumns(40);
-		textAreaAPub.setBounds(50, 60, 400, 135);
+		textAreaAPub.setBounds(50, 60, 400, 155);
 		contentPane.add(textAreaAPub);
+		TitledBorder aPubBord = BorderFactory.createTitledBorder(blackline, "Alice's Public Key");
+		aPubBord.setTitleJustification(TitledBorder.CENTER);
+		textAreaAPub.setBorder(aPubBord);
+		textAreaAPriv.setBackground(SystemColor.controlHighlight);
 		
 		textAreaAPriv.setWrapStyleWord(true);
 		textAreaAPriv.setTabSize(4);
@@ -151,8 +143,12 @@ public class Main extends JFrame {
 		textAreaAPriv.setLineWrap(true);
 		textAreaAPriv.setEditable(false);
 		textAreaAPriv.setColumns(40);
-		textAreaAPriv.setBounds(50, 205, 400, 15);
+		textAreaAPriv.setBounds(50, 225, 400, 35);
 		contentPane.add(textAreaAPriv);
+		TitledBorder aPrivBord = BorderFactory.createTitledBorder(blackline, "Alice's Private Key");
+		aPrivBord.setTitleJustification(TitledBorder.CENTER);
+		textAreaAPriv.setBorder(aPrivBord);
+		textAreaBPub.setBackground(SystemColor.controlHighlight);
 		
 		textAreaBPub.setWrapStyleWord(true);
 		textAreaBPub.setTabSize(4);
@@ -160,8 +156,12 @@ public class Main extends JFrame {
 		textAreaBPub.setLineWrap(true);
 		textAreaBPub.setEditable(false);
 		textAreaBPub.setColumns(40);
-		textAreaBPub.setBounds(750, 60, 400, 135);
+		textAreaBPub.setBounds(750, 60, 400, 155);
 		contentPane.add(textAreaBPub);
+		TitledBorder bPubBord = BorderFactory.createTitledBorder(blackline, "Bob's Public Key");
+		bPubBord.setTitleJustification(TitledBorder.CENTER);
+		textAreaBPub.setBorder(bPubBord);
+		textAreaBPriv.setBackground(SystemColor.controlHighlight);
 		
 		textAreaBPriv.setWrapStyleWord(true);
 		textAreaBPriv.setTabSize(4);
@@ -169,8 +169,12 @@ public class Main extends JFrame {
 		textAreaBPriv.setLineWrap(true);
 		textAreaBPriv.setEditable(false);
 		textAreaBPriv.setColumns(40);
-		textAreaBPriv.setBounds(750, 205, 400, 15);
+		textAreaBPriv.setBounds(750, 225, 400, 35);
 		contentPane.add(textAreaBPriv);
+		TitledBorder bPrivBord = BorderFactory.createTitledBorder(blackline, "Bob's Private Key");
+		bPrivBord.setTitleJustification(TitledBorder.CENTER);
+		textAreaBPriv.setBorder(bPrivBord);
+		textAreaASecVal.setBackground(SystemColor.controlHighlight);
 		
 		textAreaASecVal.setWrapStyleWord(true);
 		textAreaASecVal.setTabSize(4);
@@ -178,8 +182,12 @@ public class Main extends JFrame {
 		textAreaASecVal.setLineWrap(true);
 		textAreaASecVal.setEditable(false);
 		textAreaASecVal.setColumns(40);
-		textAreaASecVal.setBounds(50, 270, 400, 30);
+		textAreaASecVal.setBounds(50, 270, 400, 50);
 		contentPane.add(textAreaASecVal);
+		TitledBorder aValBord = BorderFactory.createTitledBorder(blackline, "Alice's Computed Secret Value");
+		aValBord.setTitleJustification(TitledBorder.CENTER);
+		textAreaASecVal.setBorder(aValBord);
+		textAreaBSecVal.setBackground(SystemColor.controlHighlight);
 		
 		textAreaBSecVal.setWrapStyleWord(true);
 		textAreaBSecVal.setTabSize(4);
@@ -187,8 +195,12 @@ public class Main extends JFrame {
 		textAreaBSecVal.setLineWrap(true);
 		textAreaBSecVal.setEditable(false);
 		textAreaBSecVal.setColumns(40);
-		textAreaBSecVal.setBounds(750, 270, 400, 30);
+		textAreaBSecVal.setBounds(750, 270, 400, 50);
 		contentPane.add(textAreaBSecVal);
+		TitledBorder bValBord = BorderFactory.createTitledBorder(blackline, "Bob's Computed Secret Value");
+		bValBord.setTitleJustification(TitledBorder.CENTER);
+		textAreaBSecVal.setBorder(bValBord);
+		textAreaAliceRec.setBackground(SystemColor.controlHighlight);
 		
 		textAreaAliceRec.setWrapStyleWord(true);
 		textAreaAliceRec.setTabSize(4);
@@ -196,8 +208,12 @@ public class Main extends JFrame {
 		textAreaAliceRec.setLineWrap(true);
 		textAreaAliceRec.setEditable(false);
 		textAreaAliceRec.setColumns(40);
-		textAreaAliceRec.setBounds(50, 410, 400, 60);
+		textAreaAliceRec.setBounds(50, 450, 400, 80);
 		contentPane.add(textAreaAliceRec);
+		TitledBorder aRecBord = BorderFactory.createTitledBorder(blackline, "Message From Bob");
+		aRecBord.setTitleJustification(TitledBorder.CENTER);
+		textAreaAliceRec.setBorder(aRecBord);
+		textAreaBobRec.setBackground(SystemColor.controlHighlight);
 		
 		textAreaBobRec.setWrapStyleWord(true);
 		textAreaBobRec.setText("");
@@ -206,15 +222,18 @@ public class Main extends JFrame {
 		textAreaBobRec.setLineWrap(true);
 		textAreaBobRec.setEditable(false);
 		textAreaBobRec.setColumns(40);
-		textAreaBobRec.setBounds(750, 410, 400, 60);
+		textAreaBobRec.setBounds(750, 450, 400, 80);
 		contentPane.add(textAreaBobRec);
+		TitledBorder bRecBord = BorderFactory.createTitledBorder(blackline, "Message From Alice");
+		bRecBord.setTitleJustification(TitledBorder.CENTER);
+		textAreaBobRec.setBorder(bRecBord);
+		
 		lblAtoBVerify.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		lblAtoBVerify.setBounds(850, 480, 200, 20);
+		lblAtoBVerify.setBounds(850, 540, 200, 20);
 		contentPane.add(lblAtoBVerify);
-		lblBtoAVerify.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		lblBtoAVerify.setBounds(150, 480, 200, 20);
+		lblBtoAVerify.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBtoAVerify.setBounds(150, 540, 200, 20);
 		contentPane.add(lblBtoAVerify);
 
 		JButton btnGenerateKeyPairs = new JButton("Generate Key Pairs");
@@ -281,7 +300,7 @@ public class Main extends JFrame {
 				}
 			}
 		});
-		btnAliceToBob.setBounds(130, 380, 240, 20);
+		btnAliceToBob.setBounds(130, 420, 240, 20);
 		contentPane.add(btnAliceToBob);
 
 		JButton btnBobToAlice = new JButton("Send Bob's Message to Alice");
@@ -314,7 +333,7 @@ public class Main extends JFrame {
 				}
 			}
 		});
-		btnBobToAlice.setBounds(830, 380, 240, 20);
+		btnBobToAlice.setBounds(830, 420, 240, 20);
 		contentPane.add(btnBobToAlice);
 		
 		JButton btnAliceDecryptBob = new JButton("Decrypt Bob's Message");
@@ -336,7 +355,7 @@ public class Main extends JFrame {
 				}
 			}
 		});
-		btnAliceDecryptBob.setBounds(140, 540, 220, 20);
+		btnAliceDecryptBob.setBounds(140, 600, 220, 20);
 		contentPane.add(btnAliceDecryptBob);
 		
 		JButton btnBobVerifyAlice = new JButton("Verify Alice's Signature");
@@ -349,10 +368,10 @@ public class Main extends JFrame {
 					boolean validSig = ecdsa.verify(users[0].getSig());
 					if (validSig == true) {
 						lblAtoBVerify.setText("Valid");
-						lblAtoBVerify.setForeground(Color.GREEN);
+						lblAtoBVerify.setForeground((new Color(46, 139, 87)));
 					} else {
 						lblAtoBVerify.setText("Invalid");
-						lblAtoBVerify.setForeground(Color.RED);
+						lblAtoBVerify.setForeground((new Color(220, 20, 60)));
 					}
 				} catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException e) {
 					// TODO Auto-generated catch block
@@ -361,7 +380,7 @@ public class Main extends JFrame {
 				
 			}
 		});
-		btnBobVerifyAlice.setBounds(850, 510, 200, 20);
+		btnBobVerifyAlice.setBounds(850, 570, 200, 20);
 		contentPane.add(btnBobVerifyAlice);
 
 		JButton btnBobDecrypt = new JButton("Decrypt Alice's Message");
@@ -380,7 +399,7 @@ public class Main extends JFrame {
 				}
 			}
 		});
-		btnBobDecrypt.setBounds(840, 540, 220, 20);
+		btnBobDecrypt.setBounds(840, 600, 220, 20);
 		contentPane.add(btnBobDecrypt);
 		
 		JButton btnAliceVerifyBob = new JButton("Verify Bob's Signature");
@@ -393,10 +412,10 @@ public class Main extends JFrame {
 					boolean validSig = ecdsa.verify(users[1].getSig());
 					if (validSig == true) {
 						lblBtoAVerify.setText("Valid");
-						lblBtoAVerify.setForeground(Color.GREEN);
+						lblBtoAVerify.setForeground((new Color(46, 139, 87)));
 					} else {
 						lblBtoAVerify.setText("Invalid");
-						lblBtoAVerify.setForeground(Color.RED);
+						lblBtoAVerify.setForeground((new Color(220, 20, 60)));
 					}
 				} catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException e) {
 					// TODO Auto-generated catch block
@@ -404,14 +423,8 @@ public class Main extends JFrame {
 				}
 			}
 		});
-		btnAliceVerifyBob.setBounds(150, 510, 200, 20);
+		btnAliceVerifyBob.setBounds(150, 570, 200, 20);
 		contentPane.add(btnAliceVerifyBob);
-		
-		JLabel lblPlaintextMessageArea = new JLabel("Plaintext Message Area");
-		lblPlaintextMessageArea.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPlaintextMessageArea.setFont(new Font("Serif", Font.ITALIC, 12));
-		lblPlaintextMessageArea.setBounds(510, 320, 180, 40);
-		contentPane.add(lblPlaintextMessageArea);
 	}
 	
 	public void updateKeys() {
