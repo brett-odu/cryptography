@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
 import javax.swing.JLabel;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -54,6 +54,8 @@ public class Main extends JFrame {
 	private JLabel lblAtoBVerify = new JLabel("Please Verify Signature");
 	private JLabel lblBtoAVerify = new JLabel("Please Verify Signature");
 	private Border blackline = BorderFactory.createLineBorder(Color.black);
+	private Border loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+	
 	
 	/**
 	 * Launch the application.
@@ -252,7 +254,7 @@ public class Main extends JFrame {
 			}
 		});
 
-		btnGenerateKeyPairs.setBounds(500, 60, 200, 30);
+		btnGenerateKeyPairs.setBounds(500, 145, 200, 30);
 		contentPane.add(btnGenerateKeyPairs);
 		
 		JButton btnComputeSecret = new JButton("Compute Secret Value");
@@ -267,7 +269,7 @@ public class Main extends JFrame {
 				}
 			}
 		});
-		btnComputeSecret.setBounds(500, 230, 200, 30);
+		btnComputeSecret.setBounds(500, 295, 200, 30);
 		contentPane.add(btnComputeSecret);
 		
 		JButton btnAliceToBob = new JButton("Send Alice's Message to Bob");
@@ -425,6 +427,58 @@ public class Main extends JFrame {
 		});
 		btnAliceVerifyBob.setBounds(150, 570, 200, 20);
 		contentPane.add(btnAliceVerifyBob);
+		
+		JTextArea txtrStep1 = new JTextArea();
+		txtrStep1.setFont(new Font("Serif", Font.BOLD, 12));
+		txtrStep1.setBackground(SystemColor.controlHighlight);
+		txtrStep1.setWrapStyleWord(true);
+		txtrStep1.setLineWrap(true);
+		txtrStep1.setEditable(false);
+		txtrStep1.setText("Press the button below to generate key pairs for Alice and Bob. Their keys should not match. ");
+		txtrStep1.setBounds(500, 50, 200, 85);
+		contentPane.add(txtrStep1);
+		TitledBorder step1Bdr = BorderFactory.createTitledBorder(loweredetched, "Step 1:");
+		step1Bdr.setTitlePosition(TitledBorder.RIGHT);
+		txtrStep1.setBorder(step1Bdr);
+		
+		JTextArea txtrStep2 = new JTextArea();
+		txtrStep2.setWrapStyleWord(true);
+		txtrStep2.setLineWrap(true);
+		txtrStep2.setBackground(SystemColor.controlHighlight);
+		txtrStep2.setFont(new Font("Serif", Font.BOLD, 12));
+		txtrStep2.setEditable(false);
+		txtrStep2.setText("Press the button below to compute the shared secret value for Alice and Bob. These values should match.");
+		txtrStep2.setBounds(500, 185, 200, 100);
+		contentPane.add(txtrStep2);
+		TitledBorder step2Bdr = BorderFactory.createTitledBorder(loweredetched, "Step 2:");
+		step2Bdr.setTitlePosition(TitledBorder.RIGHT);
+		txtrStep2.setBorder(step2Bdr);
+		
+		JTextArea txtrStep3 = new JTextArea();
+		txtrStep3.setWrapStyleWord(true);
+		txtrStep3.setLineWrap(true);
+		txtrStep3.setFont(new Font("Serif", Font.BOLD, 12));
+		txtrStep3.setEditable(false);
+		txtrStep3.setBackground(SystemColor.controlHighlight);
+		txtrStep3.setText("For either user, type a message you want to send to the other user. Then select the appropriate button to send the message.");
+		txtrStep3.setBounds(500, 335, 200, 115);
+		contentPane.add(txtrStep3);
+		TitledBorder step3Bdr = BorderFactory.createTitledBorder(loweredetched, "Step 3:");
+		step3Bdr.setTitlePosition(TitledBorder.RIGHT);
+		txtrStep3.setBorder(step3Bdr);
+		
+		JTextArea txtrStep4 = new JTextArea();
+		txtrStep4.setWrapStyleWord(true);
+		txtrStep4.setLineWrap(true);
+		txtrStep4.setFont(new Font("Serif", Font.BOLD, 12));
+		txtrStep4.setEditable(false);
+		txtrStep4.setBackground(SystemColor.controlHighlight);
+		txtrStep4.setText("The encrypted message will appear for the receiver. First you should verify the signature, then decrypt the message.");
+		txtrStep4.setBounds(500, 460, 200, 100);
+		contentPane.add(txtrStep4);
+		TitledBorder step4Bdr = BorderFactory.createTitledBorder(loweredetched, "Step 4:");
+		step4Bdr.setTitlePosition(TitledBorder.RIGHT);
+		txtrStep4.setBorder(step4Bdr);
 	}
 	
 	public void updateKeys() {
